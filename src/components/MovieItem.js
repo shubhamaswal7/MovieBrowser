@@ -1,5 +1,4 @@
 import React from "react";
-import Card from "../UI/Card";
 import classes from "./MovieItem.module.css";
 
 const MovieItem = (props) => {
@@ -19,9 +18,9 @@ const MovieItem = (props) => {
       <div className={classes.movie_details}>
         <div className={classes.title_rating}>
           <div className={classes.title}>{title}</div>
-          <div>{rating}</div>
+          <div>({rating})</div>
         </div>
-        <textarea>{description}</textarea>
+        <p className={classes.description}>{description}</p>
       </div>
     </li>
   );
