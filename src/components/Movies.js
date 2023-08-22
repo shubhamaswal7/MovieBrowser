@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import MovieItem from "./MovieItem";
+import classes from "./Movies.module.css"
 
 const Movies = () => {
     const [movies,setMovies] = useState([]);
@@ -35,16 +37,11 @@ const Movies = () => {
   }
 
   const moviesList = movies.map((movie)=>(
-    <section key={movie.id}>
-        <div> {movie.title}</div>
-        <div> {movie.description}</div>
-        <hr/>
-    </section>
-    
+    <MovieItem key={movie.id} poster_path={movie.backdrop_path} title={movie.title} rating={movie.vote_average} description={movie.overview} />
   )) 
 
   return <div>
-    <ul>
+    <ul className={classes.moviesList}>
         {moviesList}
     </ul>
   </div>

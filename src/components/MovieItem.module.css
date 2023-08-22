@@ -1,0 +1,28 @@
+.movie {
+    display: grid;
+    justify-content: space-between;
+    margin: 1rem;
+    /* padding-bottom: 1rem; */
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 25%);
+    flex: 0 0 calc(20%-10px);
+    list-style: none;
+  }
+
+  .img{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: fit-content;
+  }
+
+  .movie_details{
+    padding: 5px;
+  }
+
+
+  .title_rating{
+    display: flex;
+    justify-content: space-between;
+    width: inherit;
+  }
