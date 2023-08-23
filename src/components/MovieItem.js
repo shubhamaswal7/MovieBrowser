@@ -7,7 +7,7 @@ const MovieItem = (props) => {
   const rating = props.rating;
   const description = props.description;
 
-  console.log(poster_path);
+//   console.log(poster_path);
 
   return (
     <li className={classes.movie}>
@@ -18,7 +18,7 @@ const MovieItem = (props) => {
       <div className={classes.movie_details}>
         <div className={classes.title_rating}>
           <div className={classes.title}>{title}</div>
-          <div>({rating})</div>
+          <div className={classes.rating}>({rating})</div>
         </div>
         <p className={classes.description}>{description}</p>
       </div>

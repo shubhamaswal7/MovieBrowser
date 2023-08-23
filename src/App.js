@@ -1,9 +1,9 @@
 import "./App.css";
-import Movies from "./components/Movies";
+import List from "./components/Pages/List"
 
 function App() {
   return (
-      <Movies />
+      <List/>
   );
 }
 

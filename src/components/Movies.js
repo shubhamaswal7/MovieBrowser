@@ -1,50 +1,35 @@
 import React, { useEffect, useState } from "react";
 import MovieItem from "./MovieItem";
-import classes from "./Movies.module.css"
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMovieData } from "../store/movie-actions";
+import classes from "./Movies.module.css";
+import SearchAndHome from "./SearchAndHome";
 
 const Movies = () => {
-    const [movies,setMovies] = useState([]);
-  const [error, setError] = useState(null);
+  const dispatch = useDispatch();
+  const moviesState = useSelector((state) => state.movie);
+  const movies = moviesState.movieItems;
 
   useEffect(() => {
-    const fetchMovies = async () => {
-      const response = await fetch(
-        "https://api.themoviedb.org/3/movie/upcoming?api_key=beba125a266beaef025e6d8d755c2386"
-      );
+    dispatch(fetchMovieData());
+  }, [dispatch]);
+  console.log(movies);
 
-      if (!response.ok) {
-        throw new Error("Oops Something went wrong!!" + response.status);
-      }
+  const moviesList = movies.map((movie) => (
+    <MovieItem
+      key={movie.id}
+      poster_path={movie.backdrop_path}
+      title={movie.title}
+      rating={movie.vote_average}
+      description={movie.overview}
+    />
+  ));
 
-      const responseData = await response.json();
-      const movieData = responseData.results;
-
-      setMovies(movieData);
-    
-      console.log(movieData);
-    };
-    fetchMovies().catch((error) => {
-      setError(error.message);
-    });
-  }, []);
-
-  if (error) {
-    return (
-      <section>
-        <h3>{error}</h3>
-      </section>
-    );
-  }
-
-  const moviesList = movies.map((movie)=>(
-    <MovieItem key={movie.id} poster_path={movie.backdrop_path} title={movie.title} rating={movie.vote_average} description={movie.overview} />
-  )) 
-
-  return <div>
-    <ul className={classes.moviesList}>
-        {moviesList}
-    </ul>
-  </div>
+  return (
+    <div>
+      <ul className={classes.moviesList}>{moviesList}</ul>
+    </div>
+  );
 };
 
 export default Movies;
