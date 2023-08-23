@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import MovieItem from "./MovieItem";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovieData } from "../store/movie-actions";
 import classes from "./Movies.module.css";
-import SearchAndHome from "./SearchAndHome";
 
 const Movies = () => {
   const dispatch = useDispatch();

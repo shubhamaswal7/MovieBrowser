@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "../layout/Header";
 import classes from "./SearchAndHome.module.css";
 import { useDispatch } from "react-redux";
-import { movieActions } from "../store/movieSlice";
 import { fetchMovieData } from "../store/movie-actions";
 
 const SearchAndHome = () => {
   const [searchText, setSearchText] = useState('');
   const dispatch = useDispatch();
-
-  
-  const [error, setError] = useState(null);
 
   const onSearchHandler = (event) => {
     event.preventDefault();
@@ -24,6 +20,11 @@ const SearchAndHome = () => {
     event.preventDefault();
     setSearchText(event.target.value);
     console.log(searchText);
+
+    if(searchText.length>1)
+    dispatch(fetchMovieData(searchText));
+    else
+    dispatch(fetchMovieData());
   };
 
   return (

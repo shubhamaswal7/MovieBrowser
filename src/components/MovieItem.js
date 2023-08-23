@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./MovieItem.module.css";
+import defaultMoviePoster from "../assets/default_movie_poster.jpg"
 
 const MovieItem = (props) => {
   const poster_path = props.poster_path;
@@ -8,11 +9,16 @@ const MovieItem = (props) => {
   const description = props.description;
 
 //   console.log(poster_path);
+  var img_src = defaultMoviePoster;
+  if(poster_path != null){
+    img_src = "https://image.tmdb.org/t/p/w300" + poster_path;
+  }
+
 
   return (
     <li className={classes.movie}>
       <img
-        src={"https://image.tmdb.org/t/p/w300" + poster_path}
+        src={img_src}
         className={classes.img}
       />
       <div className={classes.movie_details}>
