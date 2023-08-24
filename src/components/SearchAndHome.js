@@ -34,6 +34,7 @@ const SearchAndHome = () => {
           type="text"
           id="search"
           name="search"
+          label="Search"
           value={searchText}
           onChange={onChangeHandler}
         ></input>
