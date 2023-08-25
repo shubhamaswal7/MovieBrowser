@@ -1,11 +1,20 @@
 import React from "react";
-import SearchAndHome from "../SearchAndHome";
+import { useParams } from "react-router-dom";
+import Header from "../../layout/Header";
 
-const MovieDetails = (props)=>{
+const MovieDetails = ()=>{
+    const params = useParams();
+    const {movieIndex} = params;
+   
+     const detailedMovie = JSON.parse(localStorage.getItem('DetailedMovie'));
+     console.log(detailedMovie);
+
     return(
         <div>
-            <SearchAndHome/>
-            <p>Details</p>
+            <Header>
+               <h1>Movie Details</h1>
+            </Header>
+            <div>{detailedMovie.title}</div>
         </div>
     )
 }

@@ -8,8 +8,7 @@ const MovieItem = (props) => {
   const title = props.title;
   const rating = props.rating;
   const description = props.description;
-
-  const navigate = useNavigate();
+  const index = props.index;
 
   //   console.log(poster_path);
   var img_src = defaultMoviePoster;
@@ -17,13 +16,8 @@ const MovieItem = (props) => {
     img_src = "https://image.tmdb.org/t/p/w300" + poster_path;
   }
 
-  const onClickHandler = () => {
-    console.log("clicked:" + title);
-    navigate(`/details/${title}`);
-  };
-
   return (
-    <li className={classes.movie} onClick={onClickHandler}>
+    <li className={classes.movie} onClick={props.onMovieClick}>
         <img src={img_src} className={classes.img} />
         <div className={classes.movie_details}>
           <div className={classes.title_rating}>
