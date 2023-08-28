@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import Header from "../layout/Header";
 import home_icon from "../assets/home_icon.png";
 import classes from "./SearchAndHome.module.css";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { fetchMovieData } from "../store/movie-actions";
 
 const SearchAndHome = () => {
   const [searchText, setSearchText] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onSearchHandler = (event) => {
     event.preventDefault();
@@ -25,6 +27,11 @@ const SearchAndHome = () => {
 
     if (search_value.length > 1) dispatch(fetchMovieData(search_value));
     else dispatch(fetchMovieData());
+  };
+
+  const onHomeClickHandler = () => {
+    setSearchText("");
+    dispatch(fetchMovieData());
   };
 
   return (
@@ -50,7 +57,11 @@ const SearchAndHome = () => {
           ></input>
         </div>
       </form>
-      <img className={classes.home} src={home_icon}></img>
+      <img
+        className={classes.home}
+        src={home_icon}
+        onClick={onHomeClickHandler}
+      ></img>
     </Header>
   );
 };
