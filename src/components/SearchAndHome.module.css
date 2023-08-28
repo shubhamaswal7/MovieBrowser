@@ -21,6 +21,7 @@
 .search{
     border: none;
     outline: none;
+    width: 6in;
     background-color: rgb(226, 219, 219);
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;

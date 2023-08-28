@@ -19,10 +19,11 @@ const SearchAndHome = () => {
 
   const onChangeHandler = (event) => {
     event.preventDefault();
-    setSearchText(event.target.value);
-    console.log(searchText);
+    const search_value = event.target.value;
+    setSearchText(search_value);
+    console.log(search_value);
 
-    if (searchText.length > 1) dispatch(fetchMovieData(searchText));
+    if (search_value.length > 1) dispatch(fetchMovieData(search_value));
     else dispatch(fetchMovieData());
   };
 
