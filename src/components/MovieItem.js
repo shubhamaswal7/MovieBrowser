@@ -18,7 +18,7 @@ const MovieItem = (props) => {
 
   return (
     <li className={classes.movie} onClick={props.onMovieClick}>
-        <img src={img_src} className={classes.img} />
+        <img src={img_src} height="250px" className={classes.img} />
         <div className={classes.movie_details}>
           <div className={classes.title_rating}>
             <div className={classes.title}>{title}</div>

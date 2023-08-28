@@ -17,7 +17,7 @@ const Movies = () => {
   console.log(movies);
 
   const onMovieClickHandler = (movie,index)=>{
-    console.log("movie clicekd:"+index+"movie:::"+movie);
+    console.log("movie clicked:"+index+"movie:"+movie);
     localStorage.setItem('DetailedMovie',JSON.stringify(movie))
     navigate(`/details/${index}`);
   }
@@ -25,7 +25,7 @@ const Movies = () => {
   const moviesList = movies.map((movie,index) => (
     <MovieItem
       key={movie.id}
-      poster_path={movie.backdrop_path}
+      poster_path={movie.poster_path}
       title={movie.title}
       rating={movie.vote_average}
       description={movie.overview}
