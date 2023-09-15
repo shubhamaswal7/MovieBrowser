@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {movieItems:[]}
+const initialState = {movieItems:[],totalPages:0,currentPage:1}
 
 const movieSlice = createSlice({
   name: "movie",
@@ -8,6 +8,18 @@ const movieSlice = createSlice({
   reducers:{
     replaceMovies(state,action){
         state.movieItems = action.payload.movieItems;
+    },
+    setTotalPage(state,action){
+      state.totalPages = action.payload.totalPages;
+    },
+    incrementPage(state){
+      state.currentPage++;
+    },
+    decrementPage(state){
+      state.currentPage--;
+    },
+    resetCurrentPage(state){
+      state.currentPage=1;
     }
   }
 });
