@@ -2,6 +2,7 @@ import { movieActions } from "./movieSlice";
 
 var url = "https://api.themoviedb.org/3/movie/upcoming?api_key=beba125a266beaef025e6d8d755c2386";
 export const fetchMovieData = (searchText,pageNumber)=>{
+    console.log("Search :"+searchText)
     if(searchText){
         url = "https://api.themoviedb.org/3/search/movie?query="+searchText+"&api_key=beba125a266beaef025e6d8d755c2386";
     }

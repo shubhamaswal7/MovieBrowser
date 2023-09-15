@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {movieItems:[],totalPages:0,currentPage:1}
+const initialState = {movieItems:[],totalPages:0,currentPage:1,searchText:""}
 
 const movieSlice = createSlice({
   name: "movie",
@@ -20,6 +20,9 @@ const movieSlice = createSlice({
     },
     resetCurrentPage(state){
       state.currentPage=1;
+    },
+    setSearchText(state,action){
+      state.searchText = action.payload.searchText
     }
   }
 });

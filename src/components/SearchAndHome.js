@@ -2,34 +2,38 @@ import React, { useState } from "react";
 import Header from "../layout/Header";
 import home_icon from "../assets/home_icon.png";
 import classes from "./SearchAndHome.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchMovieData } from "../store/movie-actions";
 import { movieActions } from "../store/movieSlice";
 
 const SearchAndHome = () => {
   const [searchText, setSearchText] = useState("");
   const dispatch = useDispatch();
+  const moviesState = useSelector((state) => state.movie);
+  const currentPage = moviesState.currentPage;
 
   const onSearchHandler = (event) => {
     event.preventDefault();
 
     console.log("search" + searchText);
-
-    dispatch(fetchMovieData(searchText));
+    dispatch(movieActions.setSearchText({searchText:searchText}));
+    dispatch(fetchMovieData(searchText,currentPage));
   };
 
   const onChangeHandler = (event) => {
     event.preventDefault();
     const search_value = event.target.value;
     setSearchText(search_value);
+    dispatch(movieActions.setSearchText({searchText:search_value}));
     console.log(search_value);
 
-    if (search_value.length > 1) dispatch(fetchMovieData(search_value));
+    if (search_value.length > 1) dispatch(fetchMovieData(search_value,currentPage));
     else dispatch(fetchMovieData());
   };
 
   const onHomeClickHandler = () => {
     setSearchText("");
+    dispatch(movieActions.setSearchText({searchText:""}));
     dispatch(movieActions.resetCurrentPage());
     dispatch(fetchMovieData());
   };
