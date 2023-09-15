@@ -24,13 +24,21 @@
 }
 .title {
   font-size: x-large;
+  font-weight: 500;
 }
 
 .details {
   font-size: larger;
+  font-weight:400
+}
+
+.cast{
+  font-size: larger;
+  font-weight: 500;
 }
 
 .description {
   font-family: monospace;
   font-size: x-large;
+  font-weight: 300;
 }
