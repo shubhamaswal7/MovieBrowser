@@ -1,36 +1,36 @@
-.home{
-    height: 20px;
-    width: 20px;
-    margin-top: 20px;
-    margin-right: 20px;
-    align-content: center;
-    background-color: transparent;
-    padding-left: 5px;
-    padding-right: 5px;
+.home {
+  height: 20px;
+  width: 20px;
+  margin-top: 20px;
+  margin-right: 20px;
+  align-content: center;
+  background-color: transparent;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-.poster{
-    height: 400px;
-    width: 500px;
+.poster {
+  height: 400px;
+  width: 500px;
 }
 
-.container{
-    display: flex;
-    padding: 25px;
+.container {
+  display: flex;
+  padding: 25px;
 }
 
-.container div{
-    padding-left: 10px
+.container div {
+  padding-left: 10px;
 }
-.title{
-    font-size: x-large;
-}
-
-.details{
-   font-size: larger;
+.title {
+  font-size: x-large;
 }
 
-.description{
-    font-family: monospace ;
-    font-size: x-large;
+.details {
+  font-size: larger;
+}
+
+.description {
+  font-family: monospace;
+  font-size: x-large;
 }

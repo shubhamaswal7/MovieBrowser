@@ -11,29 +11,31 @@ const SearchAndHome = () => {
   const dispatch = useDispatch();
   const moviesState = useSelector((state) => state.movie);
   const currentPage = moviesState.currentPage;
+  const globalSearchText = moviesState.searchText;
 
   const onSearchHandler = (event) => {
     event.preventDefault();
 
     console.log("search" + searchText);
-    dispatch(movieActions.setSearchText({searchText:searchText}));
-    dispatch(fetchMovieData(searchText,currentPage));
+    dispatch(movieActions.setSearchText({ searchText: searchText }));
+    dispatch(fetchMovieData(searchText, currentPage));
   };
 
   const onChangeHandler = (event) => {
     event.preventDefault();
     const search_value = event.target.value;
     setSearchText(search_value);
-    dispatch(movieActions.setSearchText({searchText:search_value}));
+    dispatch(movieActions.setSearchText({ searchText: search_value }));
     console.log(search_value);
 
-    if (search_value.length > 1) dispatch(fetchMovieData(search_value,currentPage));
+    if (search_value.length > 1)
+      dispatch(fetchMovieData(search_value, currentPage));
     else dispatch(fetchMovieData());
   };
 
   const onHomeClickHandler = () => {
     setSearchText("");
-    dispatch(movieActions.setSearchText({searchText:""}));
+    dispatch(movieActions.setSearchText({ searchText: "" }));
     dispatch(movieActions.resetCurrentPage());
     dispatch(fetchMovieData());
   };
@@ -56,7 +58,7 @@ const SearchAndHome = () => {
             name="search"
             label="Search"
             placeholder="Search"
-            value={searchText}
+            value={globalSearchText}
             onChange={onChangeHandler}
           ></input>
         </div>

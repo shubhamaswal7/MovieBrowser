@@ -1,6 +1,6 @@
-.moviesList{
-    display: flex;
-    flex-wrap: wrap;
-    /* max-width: 100%; */
-    width: 100%;
+.moviesList {
+  display: flex;
+  flex-wrap: wrap;
+  /* max-width: 100%; */
+  width: 100%;
 }

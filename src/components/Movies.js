@@ -15,9 +15,9 @@ const Movies = () => {
   const searchText = moviesState.searchText;
 
   useEffect(() => {
-    console.log("Search text:"+searchText);
+    console.log("Search text:" + searchText);
     dispatch(fetchMovieData(searchText, currentPage));
-  }, [dispatch, currentPage,searchText]);
+  }, [dispatch, currentPage, searchText]);
   console.log(movies);
 
   const onMovieClickHandler = (movie, index) => {

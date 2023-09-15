@@ -4,16 +4,15 @@ import Header from "../../layout/Header";
 import { useNavigate } from "react-router-dom";
 import defaultMoviePoster from "../../assets/default_movie_poster.jpg";
 import home_icon from "../../assets/home_icon.png";
-import classes from "./MovieDetails.module.css"
+import classes from "./MovieDetails.module.css";
 
 const MovieDetails = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const params = useParams();
   const { movieIndex } = params;
 
   const detailedMovie = JSON.parse(localStorage.getItem("DetailedMovie"));
   console.log(detailedMovie);
-
 
   const {
     poster_path,
@@ -30,9 +29,9 @@ const MovieDetails = () => {
     img_src = "https://image.tmdb.org/t/p/w300" + poster_path;
   }
 
-  const onHomeClickHandler = ()=>{
+  const onHomeClickHandler = () => {
     navigate("/");
-  }
+  };
 
   return (
     <div>
@@ -45,7 +44,7 @@ const MovieDetails = () => {
         ></img>
       </Header>
       <div className={classes.container}>
-        <img src={img_src} className={classes.poster}/>
+        <img src={img_src} className={classes.poster} />
         <div>
           <div className={classes.title}>
             {title} ({vote_average})
@@ -53,9 +52,7 @@ const MovieDetails = () => {
           <div className={classes.details}>
             {release_date} | {length} | {director}
           </div>
-          <div className={classes.description}>
-            Description: {overview}
-          </div>
+          <div className={classes.description}>Description: {overview}</div>
         </div>
       </div>
     </div>
