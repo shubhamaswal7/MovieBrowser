@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import defaultMoviePoster from "../../assets/default_movie_poster.jpg";
 import home_icon from "../../assets/home_icon.png";
 import classes from "./MovieDetails.module.css";
+import { AUTH_TOKEN, BASE_URL, IMAGE_URL } from "../../constants/api_constants";
 
 const MovieDetails = () => {
   const navigate = useNavigate();
@@ -24,15 +25,17 @@ const MovieDetails = () => {
   const { poster_path, title, vote_average, overview, release_date, id } =
     detailedMovie;
 
+  var url = BASE_URL + "movie/" + id;
   const release_year = release_date.substring(0, 4);
 
   useEffect(() => {
     const fetchDetails = async () => {
-      const response = await fetch(
-        "https://api.themoviedb.org/3/movie/" +
-          id +
-          "?api_key=beba125a266beaef025e6d8d755c2386"
-      );
+      const response = await fetch(url, {
+        headers: {
+          accept: "application/json",
+          Authorization: AUTH_TOKEN,
+        },
+      });
 
       if (!response.ok) {
         throw new Error("Something went wrong" + response.status);
@@ -53,29 +56,30 @@ const MovieDetails = () => {
     });
 
     const fetchCastandCrew = async () => {
-      const response = await fetch(
-        "https://api.themoviedb.org/3/movie/" +
-          id +
-          "/credits?api_key=beba125a266beaef025e6d8d755c2386"
-      );
+      const response = await fetch(url + "/credits", {
+        headers: {
+          accept: "application/json",
+          Authorization: AUTH_TOKEN,
+        },
+      });
 
       if (!response.ok) {
-        throw new Error("Something went wrong" + response.status);
+        throw new Error("Something went wrong!" + response.status);
       }
 
       const responseData = await response.json();
-       console.log(responseData);
-       const directors = responseData.crew.map(item=>{
-           if(item.job === "Director"){
-              return item.name;
-           }
-           return "";
-       })
+      console.log(responseData);
+      const directors = responseData.crew.map((item) => {
+        if (item.job === "Director") {
+          return item.name;
+        }
+        return "";
+      });
       setCastAndCrew({
         cast1: responseData.cast[0].name,
         cast2: responseData.cast[1].name,
         cast3: responseData.cast[2].name,
-        director: directors
+        director: directors,
       });
     };
 
@@ -86,7 +90,7 @@ const MovieDetails = () => {
 
   if (error) {
     return (
-      <section className={classes.mealsError}>
+      <section>
         <h3>{error}</h3>
       </section>
     );
@@ -94,7 +98,7 @@ const MovieDetails = () => {
 
   var img_src = defaultMoviePoster;
   if (poster_path != null) {
-    img_src = "https://image.tmdb.org/t/p/w300" + poster_path;
+    img_src = IMAGE_URL + poster_path;
   }
 
   const onHomeClickHandler = () => {
@@ -118,7 +122,8 @@ const MovieDetails = () => {
             {title} ({vote_average})
           </div>
           <div className={classes.details}>
-            Year : {release_year} | Length : {length} | Director : {castAndCrew.director}
+            Year : {release_year} | Length : {length} | Director :{" "}
+            {castAndCrew.director}
           </div>
           <div className={classes.cast}>
             Cast:{" "}

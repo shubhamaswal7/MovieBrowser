@@ -1,17 +1,15 @@
 import { movieActions } from "./movieSlice";
+import { BASE_URL, AUTH_TOKEN } from "../constants/api_constants";
 
-var url =
-  "https://api.themoviedb.org/3/movie/upcoming?api_key=beba125a266beaef025e6d8d755c2386";
+var url = BASE_URL + "movie/upcoming?language=en-US";
+
 export const fetchMovieData = (searchText, pageNumber) => {
   console.log("Search :" + searchText);
   if (searchText) {
-    url =
-      "https://api.themoviedb.org/3/search/movie?query=" +
-      searchText +
-      "&api_key=beba125a266beaef025e6d8d755c2386";
-  } else {
-    url =
-      "https://api.themoviedb.org/3/movie/upcoming?api_key=beba125a266beaef025e6d8d755c2386";
+    url = BASE_URL + "search/movie?query=" + searchText;
+  }
+  else{
+    url = BASE_URL + "movie/upcoming?language=en-US";
   }
 
   if (pageNumber) {
@@ -20,7 +18,12 @@ export const fetchMovieData = (searchText, pageNumber) => {
   }
   return async (dispatch) => {
     const fetchData = async () => {
-      const response = await fetch(url);
+      const response = await fetch(url, {
+        headers: {
+          accept: "application/json",
+          Authorization: AUTH_TOKEN,
+        },
+      });
 
       if (!response.ok) {
         throw new Error("Oops Something went wrong!!" + response.status);
