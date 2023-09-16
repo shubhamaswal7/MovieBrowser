@@ -75,10 +75,11 @@ const MovieDetails = () => {
         }
         return "";
       });
+      const cast = responseData.cast
       setCastAndCrew({
-        cast1: responseData.cast[0].name,
-        cast2: responseData.cast[1].name,
-        cast3: responseData.cast[2].name,
+        cast1: cast[0].name,
+        cast2: cast[1].name,
+        cast3: cast[2].name,
         director: directors,
       });
     };
