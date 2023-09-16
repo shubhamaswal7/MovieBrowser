@@ -38,7 +38,7 @@ const MovieDetails = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Something went wrong" + response.status);
+        throw new Error("Something went wrong!!" + response.status);
       }
 
       const responseData = await response.json();
@@ -64,7 +64,7 @@ const MovieDetails = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Something went wrong!" + response.status);
+        throw new Error("Something went wrong!!" + response.status);
       }
 
       const responseData = await response.json();
@@ -91,8 +91,8 @@ const MovieDetails = () => {
 
   if (error) {
     return (
-      <section>
-        <h3>{error}</h3>
+      <section style={{textAlign:"center"}}>
+        <h2>API Error occurred: {error}</h2>
       </section>
     );
   }

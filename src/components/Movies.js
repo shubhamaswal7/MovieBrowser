@@ -13,6 +13,7 @@ const Movies = () => {
   const movies = moviesState.movieItems;
   const currentPage = moviesState.currentPage;
   const searchText = moviesState.searchText;
+  const apiError = moviesState.apiError;
 
   useEffect(() => {
     console.log("Search text:" + searchText);
@@ -40,6 +41,9 @@ const Movies = () => {
   return (
     <div>
       <Pagination />
+       {apiError && <section style={{textAlign:"center"}}>
+        <h2>{apiError}</h2>
+      </section>}
       <ul className={classes.moviesList}>{moviesList}</ul>
     </div>
   );

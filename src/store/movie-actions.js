@@ -7,8 +7,7 @@ export const fetchMovieData = (searchText, pageNumber) => {
   console.log("Search :" + searchText);
   if (searchText) {
     url = BASE_URL + "search/movie?query=" + searchText;
-  }
-  else{
+  } else {
     url = BASE_URL + "movie/upcoming?language=en-US";
   }
 
@@ -49,6 +48,12 @@ export const fetchMovieData = (searchText, pageNumber) => {
       );
     } catch (error) {
       console.log(error);
+
+      dispatch(
+        movieActions.setApiError({
+          apiError: error.message,
+        })
+      );
     }
   };
 };

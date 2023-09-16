@@ -5,6 +5,7 @@ const initialState = {
   totalPages: 0,
   currentPage: 1,
   searchText: "",
+  apiError: "",
 };
 
 const movieSlice = createSlice({
@@ -29,6 +30,9 @@ const movieSlice = createSlice({
     setSearchText(state, action) {
       state.searchText = action.payload.searchText;
     },
+    setApiError(state,action){
+      state.apiError = action.payload.apiError;
+    }
   },
 });
 
