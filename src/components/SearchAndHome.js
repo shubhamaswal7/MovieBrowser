@@ -28,6 +28,7 @@ const SearchAndHome = () => {
     setSearchText(search_value);
     if(search_value.length<2){
        dispatch(movieActions.resetCurrentSearchPage());
+       dispatch(movieActions.resetCurrentPage());
     }
     dispatch(movieActions.setSearchText({ searchText: search_value }));
     console.log(search_value);
