@@ -11,6 +11,7 @@ const SearchAndHome = () => {
   const dispatch = useDispatch();
   const moviesState = useSelector((state) => state.movie);
   const currentPage = moviesState.currentPage;
+  const currentSearchPage = moviesState.currentSearchPage;
   const globalSearchText = moviesState.searchText;
 
   const onSearchHandler = (event) => {
@@ -18,7 +19,7 @@ const SearchAndHome = () => {
 
     console.log("search" + searchText);
     dispatch(movieActions.setSearchText({ searchText: searchText }));
-    dispatch(fetchMovieData(searchText, currentPage));
+    dispatch(fetchMovieData(searchText, currentSearchPage));
   };
 
   const onChangeHandler = (event) => {
@@ -29,7 +30,7 @@ const SearchAndHome = () => {
     console.log(search_value);
 
     if (search_value.length > 1)
-      dispatch(fetchMovieData(search_value, currentPage));
+      dispatch(fetchMovieData(search_value, currentSearchPage));
     else dispatch(fetchMovieData());
   };
 
@@ -37,6 +38,7 @@ const SearchAndHome = () => {
     setSearchText("");
     dispatch(movieActions.setSearchText({ searchText: "" }));
     dispatch(movieActions.resetCurrentPage());
+    dispatch(movieActions.resetCurrentSearchPage());
     dispatch(fetchMovieData());
   };
 

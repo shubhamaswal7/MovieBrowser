@@ -7,6 +7,9 @@ const Pagination = () => {
   const moviesState = useSelector((state) => state.movie);
   const total_pages = moviesState.totalPages;
   const currentPage = moviesState.currentPage;
+  const currentSearchPage = moviesState.currentSearchPage;
+
+  console.log("total pages:" + total_pages);
 
   const onPreviousClickedHandler = () => {
     dispatch(movieActions.decrementPage());
@@ -24,12 +27,15 @@ const Pagination = () => {
         marginTop: "10px",
       }}
     >
-      <button onClick={onPreviousClickedHandler} disabled={currentPage === 1}>
+      <button
+        onClick={onPreviousClickedHandler}
+        disabled={currentPage === 1 || currentSearchPage === 1}
+      >
         previous
       </button>
       <button
         onClick={onNextClickedHandler}
-        disabled={currentPage === total_pages}
+        disabled={currentPage === total_pages || currentSearchPage === total_pages}
       >
         next
       </button>

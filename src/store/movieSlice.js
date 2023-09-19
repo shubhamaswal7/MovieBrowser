@@ -4,6 +4,7 @@ const initialState = {
   movieItems: [],
   totalPages: 0,
   currentPage: 1,
+  currentSearchPage:1,
   searchText: "",
   apiError: "",
 };
@@ -19,13 +20,25 @@ const movieSlice = createSlice({
       state.totalPages = action.payload.totalPages;
     },
     incrementPage(state) {
+      if(state.searchText){
+        state.currentSearchPage++;
+        console.log(state.currentSearchPage);
+      }
+      
+    else
       state.currentPage++;
     },
     decrementPage(state) {
+      if(state.searchText)
+      state.currentSearchPage--;
+    else
       state.currentPage--;
     },
     resetCurrentPage(state) {
       state.currentPage = 1;
+    },
+    resetCurrentSearchPage(state){
+      state.currentSearchPage = 1;
     },
     setSearchText(state, action) {
       state.searchText = action.payload.searchText;
