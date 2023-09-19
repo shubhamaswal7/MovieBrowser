@@ -9,7 +9,7 @@ const Pagination = () => {
   const currentPage = moviesState.currentPage;
   const currentSearchPage = moviesState.currentSearchPage;
 
-  console.log("total pages:" + total_pages);
+  console.log("total pages:" + total_pages +" current page:"+currentPage+" current search page:"+currentSearchPage);
 
   const onPreviousClickedHandler = () => {
     dispatch(movieActions.decrementPage());
@@ -29,7 +29,7 @@ const Pagination = () => {
     >
       <button
         onClick={onPreviousClickedHandler}
-        disabled={currentPage === 1 || currentSearchPage === 1}
+        disabled={currentPage === 1 && currentSearchPage === 1}
       >
         previous
       </button>

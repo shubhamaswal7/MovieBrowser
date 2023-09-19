@@ -26,6 +26,9 @@ const SearchAndHome = () => {
     event.preventDefault();
     const search_value = event.target.value;
     setSearchText(search_value);
+    if(search_value.length<2){
+       dispatch(movieActions.resetCurrentSearchPage());
+    }
     dispatch(movieActions.setSearchText({ searchText: search_value }));
     console.log(search_value);
 
