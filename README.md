@@ -26,9 +26,9 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 ### `About`
 
-Redux is used in this project for state management.
-To handle routing React-Router is used.
-Fetch Api is used for making api calls
-This application is deployed in google firebase.
+Redux is used in this project for state management.\
+To handle routing React-Router is used.\
+Fetch Api is used for making api calls.\
+This application is deployed in google firebase.\
 
 Link of production application: https://movie-browser-9ba37.firebaseapp.com/
