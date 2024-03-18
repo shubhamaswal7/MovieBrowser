@@ -48,7 +48,13 @@ export const fetchMovieData = (searchText, pageNumber) => {
       );
     } catch (error) {
       console.log(error);
-
+       if(error.message === "Failed to fetch")
+       dispatch(
+        movieActions.setApiError({
+          apiError: "TMDB Api does not work with Reliance/Jio network. Try using another network or VPN"
+        })
+      );
+      else
       dispatch(
         movieActions.setApiError({
           apiError: error.message,
