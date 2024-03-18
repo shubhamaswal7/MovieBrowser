@@ -1,3 +1,4 @@
+Link of production application: https://movie-browser-9ba37.firebaseapp.com/
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -31,4 +32,3 @@ To handle routing React-Router is used.\
 Fetch Api is used for making api calls.\
 This application is deployed in google firebase.\
 
-Link of production application: https://movie-browser-9ba37.firebaseapp.com/
