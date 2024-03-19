@@ -4,3 +4,13 @@
   /* max-width: 100%; */
   width: 100%;
 }
+
+.background {
+  background-image: url(../assets/movie_bg.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  width: 100%;
+}

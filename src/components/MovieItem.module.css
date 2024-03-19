@@ -9,6 +9,7 @@
   flex: 0 0 calc(20%-10px);
   list-style: none;
   width: 250px;
+  background-color: white;
   /* height: 300px; */
 }
 

@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import MovieItem from "./MovieItem";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovieData } from "../store/movie-actions";
-import movie_bg from "../assets/movie_bg.jpg";
 import classes from "./Movies.module.css";
 import { useNavigate } from "react-router-dom";
 import Pagination from "./Pagination";
@@ -19,11 +18,9 @@ const Movies = () => {
 
   useEffect(() => {
     console.log("Search text:" + searchText);
-    if(searchText)
-    dispatch(fetchMovieData(searchText, currentSearchPage));
-  else
-  dispatch(fetchMovieData(searchText, currentPage));
-  }, [dispatch, currentPage,currentSearchPage, searchText]);
+    if (searchText) dispatch(fetchMovieData(searchText, currentSearchPage));
+    else dispatch(fetchMovieData(searchText, currentPage));
+  }, [dispatch, currentPage, currentSearchPage, searchText]);
   console.log(movies);
 
   const onMovieClickHandler = (movie, index) => {
@@ -44,17 +41,24 @@ const Movies = () => {
   ));
 
   return (
-    <div style={{backgroundImage: `url(${movie_bg})`, backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundBlendMode:'luminosity',
-    width: '100vw',
-    height: '100vh'}}>
+    <div>
       <Pagination />
-       {apiError && <section style={{textAlign:"center"}}>
-        <h1 style={{display:"inline-block", color:"white", backgroundColor:"black", }}>{apiError}</h1>
-      </section>}
-      <ul className={classes.moviesList}>{moviesList}</ul>
+      <div className={classes.background}>
+        {apiError && (
+          <section style={{ textAlign: "center" }}>
+            <h1
+              style={{
+                display: "inline-block",
+                color: "white",
+                backgroundColor: "black",
+              }}
+            >
+              {apiError}
+            </h1>
+          </section>
+        )}
+        <ul className={classes.moviesList}>{moviesList}</ul>
+      </div>
     </div>
   );
 };
