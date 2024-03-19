@@ -1,0 +1,20 @@
+button {
+    font: inherit;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid #a5a2af;
+    padding: 0.5rem 2rem;
+    border-radius: 25px;
+    margin-left: 1rem;
+  }
+  button:hover, button:active {
+    background-color: #130166;
+    border-color: #130166;
+    color: white;
+  }
+
+  button:disabled{
+    background-color: transparent;
+    border: 1px solid #a5a2af;
+    color: #a5a2af;
+  }
