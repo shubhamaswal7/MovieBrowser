@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import MovieItem from "./MovieItem";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovieData } from "../store/movie-actions";
+import movie_bg from "../assets/movie_bg.jpg";
 import classes from "./Movies.module.css";
 import { useNavigate } from "react-router-dom";
 import Pagination from "./Pagination";
@@ -43,10 +44,15 @@ const Movies = () => {
   ));
 
   return (
-    <div>
+    <div style={{backgroundImage: `url(${movie_bg})`, backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundBlendMode:'luminosity',
+    width: '100vw',
+    height: '100vh'}}>
       <Pagination />
        {apiError && <section style={{textAlign:"center"}}>
-        <h2>{apiError}</h2>
+        <h1 style={{display:"inline-block", color:"white", backgroundColor:"black", }}>{apiError}</h1>
       </section>}
       <ul className={classes.moviesList}>{moviesList}</ul>
     </div>

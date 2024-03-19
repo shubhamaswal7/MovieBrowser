@@ -33,6 +33,8 @@ const Pagination = () => {
         display: "flex",
         justifyContent: "space-between",
         marginTop: "10px",
+        padding:"10px",
+        backgroundColor:"black"
       }}
     >
       <button
