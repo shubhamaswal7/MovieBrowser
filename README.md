@@ -1,4 +1,14 @@
-Link of production application: https://movie-browser-9ba37.firebaseapp.com/
+### Link of production application: https://movie-browser-9ba37.firebaseapp.com/
+
+# Screenshots
+* ## Home
+![home](https://github.com/shubhamaswal7/MovieBrowser/assets/110021551/dce5f822-a2a4-4358-82cc-9a1c3d18a121)
+* ## Search
+![search_movie](https://github.com/shubhamaswal7/MovieBrowser/assets/110021551/3ad970cd-1e1c-42b6-93ff-a7ace04300ae)
+* ## Movie Details
+![movie_details](https://github.com/shubhamaswal7/MovieBrowser/assets/110021551/39cd021f-4cc1-410d-80c0-ea5762ef9759)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
