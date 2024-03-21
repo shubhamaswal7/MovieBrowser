@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   movieItems: [],
+  isLoading: true,
   totalPages: 0,
   currentPage: 1,
   currentSearchPage:1,
@@ -45,6 +46,9 @@ const movieSlice = createSlice({
     },
     setApiError(state,action){
       state.apiError = action.payload.apiError;
+    },
+    setIsLoading(state){
+      state.isLoading=false;
     }
   },
 });

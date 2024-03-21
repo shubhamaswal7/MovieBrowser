@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import MovieItem from "./MovieItem";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovieData } from "../store/movie-actions";
+import { InfinitySpin } from "react-loader-spinner";
 import classes from "./Movies.module.css";
 import { useNavigate } from "react-router-dom";
 import Pagination from "./Pagination";
@@ -15,6 +16,7 @@ const Movies = () => {
   const currentSearchPage = moviesState.currentSearchPage;
   const searchText = moviesState.searchText;
   const apiError = moviesState.apiError;
+  const isLoading = moviesState.isLoading;
 
   useEffect(() => {
     console.log("Search text:" + searchText);
@@ -59,6 +61,15 @@ const Movies = () => {
         )}
         <ul className={classes.moviesList}>{moviesList}</ul>
       </div>
+      {isLoading && <div className={classes.InfinitySpin}>
+        <InfinitySpin
+          visible={true}
+          width="200"
+          color="blue"
+          ariaLabel="infinity-spin-loading"
+        />
+      </div>}
+      
     </div>
   );
 };

@@ -61,5 +61,12 @@ export const fetchMovieData = (searchText, pageNumber) => {
         })
       );
     }
+    finally{
+      dispatch(
+        movieActions.setIsLoading({
+          isLoading:false
+        })
+      )
+    }
   };
 };
